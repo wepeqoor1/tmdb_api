@@ -2,10 +2,10 @@ from own_db_helpers import load_data
 from collections import OrderedDict
 
 def find_my_film(keyword, films_data):
-    for film in films_data:
-        if keyword == film['original_title']:
-            return film
-    return None
+    return next(
+        (film for film in films_data if keyword == film['original_title']),
+        None,
+    )
 
 def get_rating(my_film, films_data, num_to_recommend=8):
     params = {
@@ -16,10 +16,12 @@ def get_rating(my_film, films_data, num_to_recommend=8):
     }
     rating = {}
     for film in films_data:
-        film_rate = 0
-        for parameter in params:
-            if film[parameter] == my_film[parameter]:
-                film_rate += params[parameter]
+        film_rate = sum(
+            value
+            for parameter, value in params.items()
+            if film[parameter] == my_film[parameter]
+        )
+
         rating[film['original_title']] = film_rate
     del rating[my_film['original_title']]
     rating = OrderedDict(sorted(rating.items(), key=lambda t: t[1], reverse=True))

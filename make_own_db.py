@@ -15,7 +15,7 @@ def load_films(user_api_key, films_amount=1000):
             else:
                 raise
         finally:
-            print('%s percent complete' % str(film_id*100/ films_amount))
+            print(f'{str(film_id*100/ films_amount)} percent complete')
     return all_films
 
 if __name__ == '__main__':
