@@ -1,4 +1,4 @@
-# tmdb_api
+# Themoviedb
 Downloading films description and generate rating.
 ***
 
@@ -30,7 +30,7 @@ Searches for a movie by name in the database and outputs it to the console.
 
 ## make_own_db
 Creates its own database.  
-Checks the API key for validity, otherwise the program terminates with the error `Invalid api key'.  
+Checks the API key for validity, otherwise the program terminates with the error `Invalid api key`.    
 Uploads (by default) 1000 movies to the specified file (by default `MyFilmDB.json').  
 
 ## find_similar.py
